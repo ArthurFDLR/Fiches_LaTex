@@ -1,0 +1,157 @@
+\documentclass[french]{article}
+ 
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{inputenc}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{ulem}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{graphics}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{makecell}
+\usepackage{eurosym}
+\usepackage{textpos}
+\usepackage{pdfpages}
+\usepackage{tocloft}
+
+\usepackage{titlesec}
+\titleformat*{\section}{\LARGE\bfseries}
+\titleformat*{\subsection}{\Large\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
+
+%Saut de ligne%
+\newcommand{\bl}[0]{\vspace{1\baselineskip}}
+\newcommand{\blo}[1]{\vspace{#1\baselineskip}}
+%Numérotation des sections romaine%
+\renewcommand{\thesection}{\Roman{section}} 
+%Affichage des numéros de section dans les figures%
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\begin{document}
+\begin{center}
+	\textbf{\Large{Mathématiques pour la mécanique}}
+\end{center}
+
+\section{Généralités sur les EDP}
+\subsection{Définitions}
+\begin{definition}(Ordre d'une EDP)\par
+	L'ordre d'une EDP est l'ordre le plus élevé parmi les dérivées partielles
+\end{definition}
+
+\begin{definition}(Linéarité d'une EDP)\par
+	\begin{enumerate}[label=\textbullet,topsep=5pt,parsep=0pt,itemsep=0pt,before=\vspace{-0.2\baselineskip},after=\vspace{0.1\baselineskip}] 
+		\item Une EDP est dite linéaire si elle ne fait intervenir que des combinaisons linéaires des dérivées partielles par rapport à la fonction.
+		\item Une EDP est dite quasi-linéaire si elle est linéaire par rapport aux dérivées les plus élevées.
+	\end{enumerate}
+\end{definition}
+
+\subsection{Problème bien posé au sens d'Hadamard}
+
+\begin{definition}\par
+	On dit qu'un problème est bien posé au sens d'Hadamard si :
+	\begin{enumerate}[topsep=5pt,parsep=0pt,itemsep=0pt,before=\vspace{-0.2\baselineskip},after=\vspace{0.1\baselineskip}] 
+		\item il existe une solution;
+		\item la solution est unique;
+		\item la solution dépend de façon continue des données. Cela signifie qu'une petite variation d'une condition aux limites ou du second membre de l'équation implique une petite variation de la solution.
+	\end{enumerate}
+\end{definition}
+
+\subsection{Classification des EDP quasi-linéaires d'ordre 2}
+\subsubsection{A deux variables indépendantes}
+\begin{definition}
+	Soit l'EDP suivante :
+	$$ a \cfrac{\partial^2u}{\partial x^2} + b \cfrac{\partial^2u}{\partial y^2} + c \cfrac{\partial^2u}{\partial z^2} + [...] = 0 $$
+	où a, b, c et [...] peuvent dépendre de x,y,u, $\cfrac{\partial u}{\partial x}$, etc. On dira de cette EDP qu'elle est :
+	\begin{enumerate}[label=\textbullet,topsep=5pt,parsep=0pt,itemsep=0pt,before=\vspace{-0.2\baselineskip},after=\vspace{0.1\baselineskip}] 
+		\item parabolique si $b^2 - 4ac = 0$ (problèmes de diffusion)
+		\item hyperbolique si $b^2 - 4ac > 0$ (problèmes de propagation)
+		\item elliptique si $b^2 - 4ac < 0$ (phénomènes d'équilibre)
+	\end{enumerate}
+	L'équation est dite mixte si elle change de famille.
+\end{definition}
+
+\subsubsection{A plus de deux variables indépendantes}
+\begin{definition}\par
+	Soit l'EDP suivante :
+	$$\sum_{i,j}^{N}a_{ij}\cfrac{\partial^2u}{\partial x_i \partial x_j} + [...] = 0$$
+	\begin{enumerate}[label=\textbullet,topsep=5pt,parsep=0pt,itemsep=0pt,before=\vspace{-0.2\baselineskip},after=\vspace{0.1\baselineskip}] 
+		\item Si les valeurs propres de $[a_{ij}]$ sont non nulles et de même signe, on dit que l'équation est \textbf{elliptique}.
+		\item Si les valeurs propres de $[a_{ij}]$ sont non nulles et si au moins deux sont de signes opposés, on dit que l'équation est \textbf{hyperbolique}.
+		\item Si les valeurs propres de $[a_{ij}]$ sont nulles on dit que l'équation est \textbf{parabolique}.
+	\end{enumerate}
+\end{definition}
+
+\section{Équations et systèmes hyperboliques à deux variables}
+\subsection{Forme standard}
+Soit le problème suivant (corde vibrante infinie):
+$$
+\left\{
+\begin{array}{l}
+	w \in C^2(\mathbb{R}\times\mathbb{R}^+)\\
+	\cfrac{\partial^2 w}{\partial t^2} - c^2\cfrac{\partial^2 w}{\partial x^2} = 0\ \text{dans}\ \mathbb{R}\times\mathbb{R}^+\\
+	w(x,0) = f(x)\\
+	\cfrac{\partial w}{\partial t}(x,0) = g(x)
+\end{array}
+\right.
+$$
+Pour obtenir la forme standard de ce problème, on pose : 
+$$w_1 = \cfrac{\partial w}{\partial x}\ et\ \cfrac{\partial w}{\partial t}$$
+On a alors, en rajoutant le Lemme de Schwartz (car la fonction est $C^2$) :
+$$
+\left\{
+\begin{array}{l}
+	\cfrac{\partial w_1}{\partial t}-\cfrac{\partial w_2}{\partial x}=0\ \text{dans}\ \mathbb{R}\times\mathbb{R}^+\\
+	\cfrac{\partial w_2}{\partial t} - c\cfrac{\partial w_1}{\partial x} = 0\ \text{dans}\ \mathbb{R}\times\mathbb{R}^+\\
+	w_1(x,0) = f'(x)\\
+	w_2(x,0) = g(x)
+\end{array}
+\right.
+$$
+La \textbf{forme standard} du problème est alors : 
+$$\cfrac{\partial W}{\partial t} + A\cfrac{\partial W}{\partial x} = G$$
+avec  $W = \begin{pmatrix}w_1\\w_2\end{pmatrix}$, $A = \begin{pmatrix}0 & -1\\-c^2 & 0\end{pmatrix}$ et $G=0$. Dans la matrice A, la ligne i correspond à l'équation i, et la ligne j correspond à $w_j$.
+
+\begin{definition}(Classification des systèmes hyperboliques)\par
+	On peut alors caractériser le \textbf{système} (et non pas l'équation du système) \textbf{dans le cas où il est hyperbolique} (les valeurs propres de $A$ sont non nuls et au moins deux sont de signes opposés). Un système est soit hyperbolique, soit rien. Dans le second cas, les règles suivantes ne s'appliquent pas.
+	\begin{enumerate}[label=\textbullet,topsep=5pt,parsep=0pt,itemsep=0pt,before=\vspace{-0.2\baselineskip},after=\vspace{0.1\baselineskip}] 
+		\item Si la matrice A ne dépend pas de l'inconnue, et le vecteur G dépend de l'inconnue de manière linéaire, alors \textbf{le système est linéaire}.
+		\item Si la matrice A ne dépend pas de l'inconnue, et le vecteur G dépend de l'inconnue de manière non-linéaire, alors \textbf{le système est semi-linéaire}.
+		\item Si la matrice A dépend de l'inconnue, et le vecteur G dépend de l'inconnue de manière linéaire, alors \textbf{le système est quasi-linéaire}.
+	\end{enumerate}
+\end{definition}
+
+\subsection{Méthode des courbes caractéristiques}
+Considération la forme normal d'un systeme hyperbolique (au moins) semi-linéaire :
+$$\cfrac{\partial V_k}{\partial t} + \lambda_k \cfrac{\partial V_k}{\partial x} = F_k$$
+
+\begin{definition} (Courbe caractéristique du problèmes)\par
+    Soit $C_k : t \xrightarrow{} x_k(t)$ une courbe du plan $(x,t)$ telle que
+    $$ \cfrac{\partial x_k}{\partial t}(t) = \lambda_k(x_k(t),t) $$
+\end{definition}
+Il y a autant de famille de courbe caractéristiques que de valeurs propres dinstinctes $\lambda_k$
+Pour chaque point (x,t) du domaine étudié, passent une seule courbe de chaque familles.
+
+\begin{definition} (Variation de la solution sur une courbe caractéristique) \par
+    Soit une courbe caractéristique $t \xrightarrow x_k(t)$ de la famille $C_k$ :
+    $$ \cfrac{\partial V_k}{\partial t}(t) = F_k(x_k(t),t,U(x_k(t),t)) $$
+    
+    Dans le cas d'un systeme homogene ($V_k = 0$), la composante $V_k$ (alors appelé \textbf{Invariante de Riemann}) de la solution reste constante le long de la courbe. 
+\end{definition}
+
+\section{Systèmes hyperboliques et discontinuités}
+
+
+\end{document}
