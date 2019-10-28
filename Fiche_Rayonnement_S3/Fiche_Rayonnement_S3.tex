@@ -1,0 +1,114 @@
+\documentclass[french]{article}
+ 
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage{inputenc}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{ulem}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{graphics}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{makecell}
+\usepackage{eurosym}
+\usepackage{textpos}
+\usepackage{pdfpages}
+\usepackage{tocloft}
+
+\usepackage{titlesec}
+\titleformat*{\section}{\LARGE\bfseries}
+\titleformat*{\subsection}{\Large\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
+
+%Saut de ligne%
+\newcommand{\bl}[0]{\vspace{1\baselineskip}}
+\newcommand{\blo}[1]{\vspace{#1\baselineskip}}
+%Numerotation des sections romaine%
+\renewcommand{\thesection}{\Roman{section}} 
+%Affichage des numéros de section dans les figures%
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+%Pour les tableaux%
+%{\renewcommand{\arraystretch}{1.5} tableau}
+
+%Derivees partielles%
+\newcommand{\devp}[2]{\cfrac{\partial #1}{\partial #2}}
+\newcommand{\devpp}[2]{\cfrac{\partial^2 #1}{\partial #2^2}}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+
+\begin{document}
+\begin{center}
+     \textbf{\Huge{Rayonnement}}
+\end{center}
+
+\section{Grandeurs fondamentales}
+
+\begin{definition}(Flux émis)\par
+    Le flux émis par une surface $dS$, qui rayonne dans un angle solide $d\Omega$, sur un intervalle de longueur d'onde $d\lambda$ et dans une direction $Ox$, exprimé en Watt, s'écrit :
+    $$d\phi_{\lambda,Ox} = L_{\lambda,Ox}dScos\theta d\Omega d\lambda$$
+\end{definition}
+
+\begin{definition}(Luminance)\par
+    La luminance est la puissance de la lumière visible passant ou étant émise en un élément de surface dans une direction donnée, par unité de surface et par unité d'angle solide. Elle peut être monochromatique directionnelle ($L_{\lambda,Ox},\text{ en } W.m^{-3}.sr^{-1}$ ou $W.m^{-2}.\mu m^{-1}.sr^{-1}$), totale directionnelle ($L_{Ox}$, en $W.m^{-2}.sr^{-1}$) ou totale globale ($L_{tot-glob}$, en $W.m^{-2}$) :
+        $$L_{\lambda,Ox} = \cfrac{d\phi_{\lambda,Ox}}{dSd\Omega d\lambda}$$
+        $$L_{Ox} = \int_0^{\infty}L_{\lambda,Ox}d\lambda$$
+        $$L_{tot-glob} = \int_{\lambda=0}^{\infty}\int_{\Omega}L_{\lambda,Ox}d\lambda d\Omega$$
+\end{definition}
+
+\begin{definition}(Intensité)\par
+    
+    
+\end{definition}
+
+\begin{definition}(Exitance)\par
+    L'exitance désigne le flux énergétique émis par unité de surface. Elle peut être monochromatique directionnelle ($H_{\lambda,Ox}$), monochromatique globale ($H_{\lambda}$) ou totale globale ($H$, en $W.m^{-2}$) :
+        $$H_{\lambda,Ox} = L_{\lambda,Ox}cos\theta d\Omega$$
+        $$H_{\lambda} = \int_{\Omega}L_{\lambda,Ox}cos\theta d\Omega$$
+        $$H = \int_{\lambda=0}^{\infty}\int_{\Omega}L_{\lambda,Ox}cos\theta d\lambda d\Omega$$
+\end{definition}
+
+\begin{definition}(Eclairement)\par
+    L'éclairement désigne la densité de flux arrivant sur un récepteur. Il peut être monochromatique  ($E_{\lambda}$ en $W.m^{-2}.\mu m^{-1}$) ou total ($E$, en $W.m^{-2}$) : 
+    $$E_{\lambda} = \cfrac{d\phi_{\lambda}}{dS'd\lambda}$$
+    $$E = \int_{\lambda=0}^{\infty}E_{\lambda}d\lambda =\cfrac{d\phi_{\lambda}}{dS'}$$
+\end{definition}
+
+
+\section{Corps noir}
+\subsection{Luminance d'un corps noir}
+La luminance spectrale d'un corps noir est donnée par la relation :
+$$ L_{\lambda, T}^0 = \cfrac{2hc^2}{\lambda^5\Big(exp\Big(\cfrac{hc}{\lambda kT}\Big)-1\Big)}$$
+avec : $h=6,626.10^{-34}J.s$ et $k=1,38.10^{-23}m.s^{-1}$.
+
+
+\subsection{Exitance d'un corps noir}
+L'exitance monochromatique d'un corps noir est donnée par la loi de Beer-Lambert :
+$$H_{\lambda, T}^0 = \pi L_{\lambda, T}^0$$
+$$ H_{\lambda, T}^0 = \cfrac{C_1}{\lambda^5\Big(exp\Big(\cfrac{C_2}{\lambda T}\Big)-1\Big)}$$
+avec : $C_1=2\pi hc^2 = 3,742.10^8\ W.\mu m^4.m^{-2}$ et $C_2 = \cfrac{hc}{k}=1,439.10^4\ \mu m.K$
+
+\subsection{Loi de déplacement de Wien}
+
+\begin{center}
+    \fbox{$ \lambda_{max} T = 2898 \mu m.K $}
+\end{center} 
+
+\subsection{Loi de Stefan}
+
+\begin{center}
+\fbox{$H_T^0 = \sigma T^4$}
+\end{center}
+avec $\sigma = 5,67.10^{-8}\ W.m^{-2}.K^{-4}$.
+\end{document}
