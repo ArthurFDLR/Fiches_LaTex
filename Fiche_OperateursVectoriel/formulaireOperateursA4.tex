@@ -1,0 +1,247 @@
+\documentclass[a4paper,portrait,final,fontscale=1.27, margin=1cm]{baposter}
+
+
+\usepackage[french]{babel}
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{ulem}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{mhchem}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{graphics}
+\usepackage{xcolor}
+\usepackage{caption}
+\usepackage{makecell}
+\usepackage{eurosym}
+\usepackage{textpos}
+\usepackage{pdfpages}
+\usepackage{tocloft}
+
+\usepackage{titlesec}
+\titleformat*{\section}{\LARGE\bfseries}
+\titleformat*{\subsection}{\Large\bfseries}
+\titleformat*{\subsubsection}{\large\bfseries}
+
+%Saut de ligne%
+\newcommand{\bl}[0]{\vspace{1\baselineskip}}
+\newcommand{\blo}[1]{\vspace{#1\baselineskip}}
+%Numérotation des sections romaine%
+\renewcommand{\thesection}{\Roman{section}} 
+%Affichage des numéros de section dans les figures%
+\renewcommand{\thefigure}{\thesection.\arabic{figure}}
+
+\DeclareMathOperator{\cotan}{cotan}
+
+\definecolor{degradegauche}{RGB}{200,200,200}
+\definecolor{degradedroit}{RGB}{100,100,100}
+
+\begin{document}
+
+	\begin{poster}{grid=false,columns=3,colspacing=10pt,headerheight=0.05\textheight,eyecatcher=false,headerborder=open,headershape=roundedright,textborder=rounded,linewidth=1pt,borderColor=black,headerColorOne=degradegauche,headerColorTwo=degradedroit,headerFontColor=blue,boxColorOne=white,background=none,bgColorOne=green,bgColorTwo=yellow,headerfont=\bf\Large,headerFontColor=black}
+		{
+			%Pas d'eyecatcher
+		}
+		{
+			\hspace{\fill} \blo{-0.5} Formulaire mathématique\hspace{\fill}
+		}
+		{
+			%Pas d'auteur
+		}
+		{
+			%Pas de logo
+		}
+		
+	
+		\headerbox{Opérateurs - Fondamentaux}{name=opelafond,span=1,column=2,row=0}{
+			$$\overrightarrow{grad}(f.g)=f.\overrightarrow{grad}(g)+g.\overrightarrow{grad}(f)$$
+			$$div(f.\overrightarrow{g})=f.div(\overrightarrow{g})+\overrightarrow{g}\cdot\overrightarrow{grad}(f)$$
+			$$\overrightarrow{rot}(f.\overrightarrow{g})=f.\overrightarrow{rot}(\overrightarrow{g})+\overrightarrow{g}\wedge\overrightarrow{grad}(f)$$
+			\bl
+			$$div(\overrightarrow{grad}f)=\Delta f$$
+			$$\overrightarrow{grad}(div\overrightarrow{f}) - \overrightarrow{rot}(\overrightarrow{rot}\overrightarrow{f}) = \Delta\overrightarrow{f}$$
+			$$div(\overrightarrow{rot}) = 0 $$
+			$$\overrightarrow{rot}(\overrightarrow{grad})=\overrightarrow{0}$$
+		}
+	
+		\headerbox{Opérateurs - Coordonnées cartésiennes}{name=opecarte,span=2,column=0,row=0}{
+			\noindent Le vecteur nabla permet de retrouver les autres opérateurs \textbf{\underline{en coordonnées cartésiennes} \\\underline{uniquement}} :
+			\begin{math}
+				\overrightarrow{\nabla} = 
+				\begin{pmatrix} 
+				\cfrac{\partial}{\partial x}\\
+				\cfrac{\partial}{\partial y}\\
+				\cfrac{\partial}{\partial z}
+				\end{pmatrix}
+			\end{math}
+			. On a ainsi :
+			$
+			\left\{
+			\begin{array}{l}
+			\overrightarrow{\nabla}f = \overrightarrow{grad}(f)\\
+			\overrightarrow{\nabla}\cdot \overrightarrow{f} = div(\overrightarrow{f})\\
+			\overrightarrow{\nabla}\wedge \overrightarrow{f} = \overrightarrow{rot}(\overrightarrow{f})\\
+			\overrightarrow{\nabla}\cdot\overrightarrow{\nabla}f = \Delta f\ \text{Attention, laplacien \underline{scalaire}}
+			\end{array}
+			\right.
+			$.\par
+			%\noindent Le laplacien vectoriel s'exprime : 
+			%$\overrightarrow{\Delta}\overrightarrow{f} = \overrightarrow{\nabla}^2\overrightarrow{f} = 
+			%\begin{pmatrix}
+			%	\cfrac{\partial^2 f_x}{\partial x^2} & \cfrac{\partial^2 f_x}{\partial y^2} & \cfrac{\partial^2 %f_x}{\partial z^2}\\[10pt]
+			%	\cfrac{\partial^2 f_y}{\partial x^2} & \cfrac{\partial^2 f_y}{\partial y^2} & \cfrac{\partial^2 %f_y}{\partial z^2}\\[10pt]
+			%	\cfrac{\partial^2 f_z}{\partial x^2} & \cfrac{\partial^2 f_z}{\partial y^2} & \cfrac{\partial^2 %f_z}{\partial z^2}\\
+			%\end{pmatrix} 
+			%$
+		}
+		\headerbox{Opérateurs - Coordonnées cylindriques}{name=opecyl,span=2,column=0,below=opecarte}{
+			\begin{center}
+				\begin{tabular}{c c c}
+					$\overrightarrow{grad}(f) = 
+					\begin{pmatrix}
+						\cfrac{\partial f}{\partial r}\\[10pt]
+						\cfrac{1}{r}\cfrac{\partial f}{\partial \theta}\\[10pt]
+						\cfrac{\partial f}{\partial z}
+					\end{pmatrix}$ ; 
+					
+					& 
+					
+					 $ div(\overrightarrow{f}) = \cfrac{1}{r}\cfrac{\partial(r f_r)}{\partial r} + \cfrac{1}{r}\cfrac{\partial f_{\theta}}{\partial \theta} + \cfrac{\partial f_z}{\partial z}$; 
+					 
+					 &
+					 
+					 $  \overrightarrow{rot}(\overrightarrow{f}) = 
+					 \begin{pmatrix}
+					 	\cfrac{1}{r}\cfrac{\partial f_z}{\partial \theta}-\cfrac{\partial f_{\theta}}{\partial z}\\[10pt]
+					 	\cfrac{\partial f_r}{\partial z} - \cfrac{\partial f_z}{\partial r}\\[10pt]
+					 	\cfrac{1}{r}\Big(\cfrac{\partial (r f_{\theta})}{\partial r} - \cfrac{\partial (r f_r)}{\partial \theta}\Big)
+					 \end{pmatrix} $
+				\end{tabular} 
+			$\Delta f = \cfrac{1}{r}\cfrac{\partial}{\partial r}\Big(r\cfrac{\partial f}{\partial r}\Big) + \cfrac{1}{r^2}\cfrac{\partial^2f}{\partial \theta^2} + \cfrac{\partial^2f}{\partial z^2}$
+			\end{center}
+		}
+	
+		\headerbox{Opérateurs - Coordonnées sphériques}{name=opesphe, span=3, column=0, below=opecyl}{
+			\begin{center}
+				\begin{tabular}{c p{25pt} c p{25pt} c}
+					$\overrightarrow{grad}(f) = 
+					\begin{pmatrix}
+					\cfrac{\partial f}{\partial r}\\[10pt]
+					\cfrac{1}{r}\cfrac{\partial f}{\partial \theta}\\[10pt]
+					\cfrac{1}{r.sin\theta}\cfrac{\partial f}{\partial \varphi}
+					\end{pmatrix}$ ; 
+					
+					& &
+					
+					$div(\overrightarrow{f}) = \cfrac{1}{r^2}\cfrac{\partial(r^2 f_r)}{\partial r} + \cfrac{1}{r.sin\theta}\cfrac{\partial (sin\theta.f_{\theta})}{\partial \theta} + \cfrac{1}{r.sin\theta}\cfrac{\partial f_{\varphi}}{\partial \varphi}\ \text{;}$
+					
+					& &
+					
+					$\overrightarrow{rot}(\overrightarrow{f}) = 
+					\begin{pmatrix}
+					\cfrac{1}{r.sin\theta}\Big(\cfrac{\partial (sin\theta.f_{\varphi})}{\partial \theta}-\cfrac{\partial f_{\theta}}{\partial \varphi}\Big)\\[10pt]
+					
+					\cfrac{1}{r.sin\theta}\Big(\cfrac{\partial f_r}{\partial \varphi} - \cfrac{\partial (r.sin\theta.f_{\varphi})}{\partial r}\Big)\\[10pt]
+					
+					\cfrac{1}{r}\Big(\cfrac{\partial (r f_{\theta})}{\partial r} - \cfrac{\partial f_r}{\partial \theta}\Big)
+					\end{pmatrix} $ ;
+					
+					
+				\end{tabular} 
+							
+				
+				$$\Delta f = \cfrac{1}{r^2}\cfrac{\partial}{\partial r}\Big(r^2\cfrac{\partial f}{\partial r}\Big) + \cfrac{1}{r^2.sin\theta}\cfrac{\partial}{\partial \theta}\Big(sin\theta\cfrac{\partial f}{\partial \theta}\Big) +  \cfrac{1}{r^2.sin^2\theta}\cfrac{\partial^2f}{\partial \varphi^2}$$
+			\end{center}
+		}
+	
+		\headerbox{Opérateurs de second ordre - Coordonnées cartésiennes}{name=opetenscarte,span=3,column=0,below=opesphe}{
+			Soit $\overrightarrow{u}$ un vecteur et $T$ un tenseur.
+			\begin{center}
+				\begin{tabular}{c p{15pt} c p{15pt} c}
+					$\overline{\overline{grad}}(\overrightarrow{u}) = 
+					\begin{pmatrix}
+					\cfrac{\partial u_x}{\partial x} & \cfrac{\partial u_x}{\partial y} & \cfrac{\partial u_x}{\partial z} \\[10pt]
+					\cfrac{\partial u_y}{\partial x} & \cfrac{\partial u_y}{\partial y} & \cfrac{\partial u_y}{\partial z} \\[10pt]
+					\cfrac{\partial u_z}{\partial x} & \cfrac{\partial u_z}{\partial y} & \cfrac{\partial u_z}{\partial z} \\[10pt]
+					\end{pmatrix}$;
+					
+					& &
+					
+					$\overrightarrow{div}(\overline{\overline{M}}) = 
+					\begin{pmatrix}
+					\cfrac{\partial T_{xx}}{\partial x} + \cfrac{\partial T_{xy}}{\partial y} + \cfrac{\partial T_{xz}}{\partial z} \\[10pt]
+					\cfrac{\partial T_{yx}}{\partial x} + \cfrac{\partial T_{yy}}{\partial y} + \cfrac{\partial T_{yz}}{\partial z} \\[10pt]
+					\cfrac{\partial T_{zx}}{\partial x} + \cfrac{\partial T_{zy}}{\partial y} + \cfrac{\partial T_{zz}}{\partial z} \\[10pt]
+					\end{pmatrix}$;
+					
+					& &
+					
+					$\Delta(\overrightarrow{u}) = 
+					\begin{pmatrix}
+					\cfrac{\partial^2 u_x}{\partial x^2} & \cfrac{\partial^2 u_x}{\partial y^2} & \cfrac{\partial^2 u_x}{\partial z^2} \\[10pt]
+					\cfrac{\partial^2 u_y}{\partial x^2} & \cfrac{\partial^2 u_y}{\partial y^2} & \cfrac{\partial^2 u_y}{\partial z^2} \\[10pt]
+					\cfrac{\partial^2 u_z}{\partial x^2} & \cfrac{\partial^2 u_z}{\partial y^2} & \cfrac{\partial^2 u_z}{\partial z^2} \\[10pt]
+					\end{pmatrix}$
+				\end{tabular}
+			\end{center}
+		}
+		
+		\headerbox{Opérateurs de second ordre - Coordonnées cylindriques}{name=opetenscyl,span=3,column=0,below=opetenscarte}{
+			Soit $\overrightarrow{u}$ un vecteur et $T$ un tenseur.
+			\begin{center}
+				\begin{tabular}{c p{15pt} c}
+					$\overline{\overline{grad}}(\overrightarrow{u}) = 
+					\begin{pmatrix*}[l]
+					\cfrac{\partial u_r}{\partial r} & \cfrac{1}{r}\Big(\cfrac{\partial u_r}{\partial \theta} - u_{\theta}\Big) & \cfrac{\partial u_r}{\partial z} \\[10pt]
+					\cfrac{\partial u_{\theta}}{\partial r} & \cfrac{1}{r}\Big(\cfrac{\partial u_{\theta}}{\partial \theta}+u_r\Big) & \cfrac{\partial u_{\theta}}{\partial z} \\[10pt]
+					\cfrac{\partial u_z}{\partial r} & \cfrac{1}{r}\cfrac{\partial u_z}{\partial \theta} & \cfrac{\partial u_z}{\partial z} \\[10pt]
+					\end{pmatrix*}$;
+					
+					& &
+					
+					$\overrightarrow{div}(\overline{\overline{T}}) = 
+					\begin{pmatrix*}[l]
+					\cfrac{\partial T_{rr}}{\partial r} + \cfrac{1}{r}\cfrac{\partial T_{r\theta}}{\partial \theta} + \cfrac{\partial T_{rz}}{\partial z} + \cfrac{T_{rr}-T_{\theta\theta}}{r}\\[10pt]
+					\cfrac{\partial T_{\theta r}}{\partial r} + \cfrac{1}{r}\cfrac{\partial T_{\theta\theta}}{\partial \theta} + \cfrac{\partial T_{\theta z}}{\partial z} +\cfrac{T_{r\theta}+T_{\theta r}}{r}\\[10pt]
+					\cfrac{\partial T_{zr}}{\partial r} + \cfrac{1}{r}\cfrac{\partial T_{z\theta}}{\partial \theta} + \cfrac{\partial T_{zz}}{\partial z} + \cfrac{T_{zr}}{r}\\[10pt]
+					\end{pmatrix*}$
+				\end{tabular}
+			\end{center}
+		}
+		
+		\headerbox{Opérateurs de second ordre - Coordonnées sphériques}{name=opetenssphe,span=3,column=0,below=opetenscyl}{
+			Soit $\overrightarrow{u}$ un vecteur et $T$ un tenseur.
+			\begin{center}
+				\begin{tabular}{c p{15pt} c}
+					$\overline{\overline{grad}}(\overrightarrow{u}) = 
+					\begin{pmatrix*}[l]
+					\cfrac{\partial u_r}{\partial r} & \cfrac{1}{r}\Big(\cfrac{\partial u_r}{\partial \theta} - u_{\theta}\Big) & \cfrac{1}{r}\Big(\cfrac{1}{sin\theta}\cfrac{\partial u_r}{\partial \varphi} - u_{\varphi}\Big) \\[10pt]
+					
+					\cfrac{\partial u_{\theta}}{\partial r} & \cfrac{1}{r}\Big(\cfrac{\partial u_{\theta}}{\partial \theta}+u_r\Big) & \cfrac{1}{r.sin\theta}\Big(\cfrac{\partial u_{\theta}}{\partial \varphi} -cos\theta u_{\varphi}\Big)\\[10pt]
+					
+					\cfrac{\partial u_{\varphi}}{\partial r} & \cfrac{1}{r}\cfrac{\partial u_{\varphi}}{\partial \theta} & \cfrac{1}{r}\Big(\cfrac{1}{sin\theta}\cfrac{\partial u_{\varphi}}{\partial \varphi}+u_r+\cfrac{1}{tan\theta}u_{\theta} \\[10pt]
+				\end{pmatrix*}$;
+				
+				& &
+				
+				$\overrightarrow{div}(\overline{\overline{T}}) = 
+				\begin{pmatrix*}[l]
+				\cfrac{\partial T_{rr}}{\partial r} + \cfrac{1}{r}\cfrac{\partial T_{r\theta}}{\partial \theta} + \cfrac{1}{r.sin\theta}\cfrac{\partial T_{r\varphi}}{\partial \varphi} + \cfrac{2T_{rr}-T_{\theta\theta}-T_{\varphi\varphi}}{r} + \cfrac{1}{r.tan\theta}T_{r\theta}\\[10pt]
+				
+				\cfrac{\partial T_{\theta r}}{\partial r} + \cfrac{1}{r}\cfrac{\partial T_{\theta\theta}}{\partial \theta} + \cfrac{1}{r.sin\theta}\cfrac{\partial T_{\theta \varphi}}{\partial \varphi} + \cfrac{3T_{r\theta}}{r} + \cfrac{1}{r.tan\theta}\Big(T_{\theta\theta}-T_{\varphi\varphi}\Big)\\[10pt]
+				
+				\cfrac{\partial T_{\varphi r}}{\partial r} + \cfrac{1}{r}\cfrac{\partial T_{\varphi\theta}}{\partial \theta} + \cfrac{1}{r.sin\theta}\cfrac{\partial T_{\varphi\varphi}}{\partial \varphi} + \cfrac{3T_{r\varphi}}{r} + \cfrac{2}{r.tan\theta}T_{\theta\varphi}\\[10pt]
+			\end{pmatrix*}$
+			\end{tabular}
+			\end{center}
+		}
+	
+		\end{poster}
+
+	
+		
+\end{document}
