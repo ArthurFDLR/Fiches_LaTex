@@ -48,7 +48,7 @@
 \section{Equations de bilans}
 \begin{definition}Bilan de masse (continuité)\par
 $$ \cfrac{\partial \rho}{\partial t} + div(\rho \vec{v}) = 0 $$
-	On en déduit l'équivalence : écoulement incompressible $ \leftrightarrow div(\vec{v})$
+	On en déduit l'équivalence : écoulement incompressible $ \Leftrightarrow div(\vec{v})$
 \end{definition}
 
 \begin{definition}Bilan de quantité de mouvement\par
@@ -87,9 +87,9 @@ $$ \cfrac{\partial \rho}{\partial t} + div(\rho \vec{v}) = 0 $$
 		$
 		\left\{
 			\begin{array}{ll}
-				St << 1 \rightarrow \mbox{quasi-permanent} \\
-				St \approx 1 \rightarrow \mbox{instationnaire} \\
-				St << 1 \rightarrow \mbox{fortement instationnaire} \\
+				St << 1 \Rightarrow \mbox{quasi-permanent} \\
+				St \approx 1 \Rightarrow \mbox{instationnaire} \\
+				St << 1 \Rightarrow \mbox{fortement instationnaire} \\
 			\end{array}
 		\right.
 		$
@@ -100,13 +100,13 @@ $$ \cfrac{\partial \rho}{\partial t} + div(\rho \vec{v}) = 0 $$
 		$
 		\left\{
 			\begin{array}{ll}
-				Re << 1 \rightarrow \mbox{ecoulement rampant} \\
-				St \approx 1 \rightarrow \mbox{diffusion et advection du même ordre de grandeur} \\
-				St << 1 \rightarrow \mbox{effets de viscosité négligeables} \\
+				Re << 1 \Rightarrow \mbox{ecoulement rampant} \\
+				Re \approx 1 \Rightarrow \mbox{diffusion et advection du même ordre de grandeur} \\
+				Re << 1 \Rightarrow \mbox{effets de viscosité négligeables} \\
 			\end{array}
 		\right.
 		$
-		\item \textbf{Nombre de Froude} : $St = \frac{V^2}{L \ g}  \approx \frac{\mbox{force d'inertie}}{\mbox{force de pesanteur}}$ 
+		\item \textbf{Nombre de Froude} : $Fr = \frac{V^2}{L \ g}  \approx \frac{\mbox{force d'inertie}}{\mbox{force de pesanteur}}$ 
 	\end{itemize} 
 \end{definition}
 
@@ -115,7 +115,25 @@ $$ \cfrac{\partial \rho}{\partial t} + div(\rho \vec{v}) = 0 $$
 	$$ \sigma \approx \sqrt{\nu \ T_a } \approx \sqrt{\nu \ T_d }$$ 
 \end{definition}
 
+
 \subsection{Rotation dans les écoulements}
 
+\begin{definition} Theoreme de Kelvin \par
+	$$ \frac{\vec{\Omega}}{2} = \frac{rot(\vec{V})}{2} $$
+	\textit{Remarque} : Par le théoreme de Stockes, on obtient un lien avec la circulation
+	$ \Theta(C) = \oint_C \vec{v} \ \vec{dl} = \int_S \vec{\Omega} \vec{n} \ dS$
+\end{definition}
+
+
+\begin{definition} Taux de rotation local \par
+	Si les effets visqueux sont négligeables au voisinage d'un domaine matériel dans le fluide (fluide parfait) :
+	La circulation sur un \textbf{contour matériel fermé} reste constante au cours du temps.
+	\textit{Remarque} : Proche de la paroie (omniprésence des phénomene visqueux), la condition d'adhrence fait apparaitre un rotationel non nul.
+\end{definition}
+
+\begin{definition} Loi de Biot et Savart \par
+	$$ \vec{V}(M) = - \int_V \frac{\vec{\Omega}(M') \wedge \vec{r}}{4 \pi r^3} dV \; \mbox{avec} \; \vec{r} = \vec{MM'} $$
+	La vorticité dans l'élément de volume $dV$ \textbf{induit une rotation} de tout le fluide à la distance $r$ de vitesse de rotation $ \frac{\Omega \ dV}{4\pi r^3}$
+\end{definition}
 
 \end{document}
