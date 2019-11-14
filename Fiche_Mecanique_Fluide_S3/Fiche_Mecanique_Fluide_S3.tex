@@ -136,4 +136,28 @@ $$ \cfrac{\partial \rho}{\partial t} + div(\rho \vec{v}) = 0 $$
 	La vorticité dans l'élément de volume $dV$ \textbf{induit une rotation} de tout le fluide à la distance $r$ de vitesse de rotation $ \frac{\Omega \ dV}{4\pi r^3}$
 \end{definition}
 
+\section{Couche limite laminaire}
+
+\begin{definition} Présence d'une couche limite et estimation \par
+	Dans les écoulements à $Re >> 1$ les effets inertielles dominent mais il existe une zone proche des paroies où la viscosité ne peut etre négligé. On peut caractéristiser l'epaisseur sur la quelle les deux effets sont présents :
+	$$ T_a = T_d \Leftrightarrow \frac{L}{V} = \frac{\delta^2}{\nu} \Leftrightarrow \delta = \sqrt{\frac{\nu L}{V}} = \frac{L}{\sqrt{R_{eL}}} $$
+\end{definition}
+
+\begin{definition} \textbf{Epaisseur conventionnelle} de couche limite \par
+	Soit $ U_e(x) $ la vitesse en fluide parfait, $U(x,y)$ la vitesse en considerant la viscosité.
+	$$ U(x,\delta(x)) = 0.99 \ U_e(x) $$
+	\textit{Remarque} : cette longueur sera utilisé dans les bilans intégraux.
+\end{definition}
+
+\begin{definition} \textbf{Epaisseur de déplacement} de couche limite \par
+	Caractéristise l'écart à la situation du fuilde parfait concernant le débit à travers l'épaisseure de la couche limite.
+	$$ \delta ^{*} = \int_0^{"\infty"} (1 - \frac{U}{U_e}) dy = \int_0^{\delta} (1 - \frac{U}{U_e}) dy$$
+	\textit{Remarque} : $\delta^{*}$ peut etre considéré comme le déplacement de la ligne de courant $q_v = U_e(\delta-\delta^{*})$
+\end{definition}
+
+\begin{definition} \textbf{Epaisseur de quantité de mouvement} de couche limite \par
+	C'est la hauteur dont il faudrait déplacer la surface de déplacement pour conserver le début de quantité de mouvement en fluide parfait.
+	$$ \Theta(x) = \int_0^{\delta} \frac{U}{U_e} (1-\frac{U}{U_e}) dy $$
+\end{definition}
+
 \end{document}
