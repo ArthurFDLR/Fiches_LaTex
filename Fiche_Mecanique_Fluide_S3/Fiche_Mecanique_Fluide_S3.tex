@@ -54,7 +54,7 @@ $$ \cfrac{\partial \rho}{\partial t} + div(\rho \vec{v}) = 0 $$
 \begin{definition}Bilan de quantité de mouvement\par
 	$$ \rho \frac{d \vec{v}}{dt} = -grad(p) + \mu \Delta\vec{v} + \vec{f} $$
 	en développement la dérivé droite et en introduisant la viscosité cinématique ($\nu = \frac{\mu}{\rho}$) :
-	$$ \frac{\partial \vec{v}}{\partial t} + \bar{\bar{grad}}.\vec{v} = -\frac{grad(p)}{\rho} + \nu \Delta\vec{v} + \frac{\vec{f}}{\rho} $$
+	$$ \frac{\partial \vec{v}}{\partial t} + \bar{\bar{grad}}(\vec{v}).\vec{v} = -\frac{grad(p)}{\rho} + \nu \Delta\vec{v} + \frac{\vec{f}}{\rho} $$
 \end{definition}
 
 \begin{definition}Loi de Newton\par
@@ -135,6 +135,40 @@ $$ \cfrac{\partial \rho}{\partial t} + div(\rho \vec{v}) = 0 $$
 	$$ \vec{V}(M) = - \int_V \frac{\vec{\Omega}(M') \wedge \vec{r}}{4 \pi r^3} dV \; \mbox{avec} \; \vec{r} = \vec{MM'} $$
 	La vorticité dans l'élément de volume $dV$ \textbf{induit une rotation} de tout le fluide à la distance $r$ de vitesse de rotation $ \frac{\Omega \ dV}{4\pi r^3}$
 \end{definition}
+
+\begin{definition} Enstrophie \par
+	L'enstrophie représente l'intensité tourbillonnaire (indépendement de l'orientation).
+	$$ F = \frac{\Omega ^2}{2}  $$
+	Seul l'étirement d'un tourbillon peut faire varier son intensé. Les autres actions se traduisent par une réorientation des filets tourbillonnaires (qui s'arretent obligatoirement sur une paroi ou sur eux-meme).
+\end{definition}
+
+\subsection{Mise en situation}
+
+\begin{itemize}
+	\item \textbf{Ecoulement de couette}
+
+	L'echelle de temps pertinente est $ T_d = \frac{h^2}{\nu} $ pour l'établissement de la solution Couette stationnaire. Les effets visqueux sont confinés à une distance de l'ordre $\delta = \sqrt{\nu t}$ au temps $t$.
+	
+	\item \textbf{Ecoulement de Poiseuille en conduite}
+	
+	L'echelle de temps pertinente est $ T_d = \frac{a^2}{\nu} $ où $a$ est le rayon du tube. La pression est le seul role moteur. Sa force compense les fortement visqueux aux paroies et sa puissance équilibre les dissipations.
+
+	\item \textbf{Ecoulement à lignes de courant circulaires}
+	
+	Le gradient radial de pression compense les effets centrifuges.
+
+	\item \textbf{Tourbillon de Lamb-Oseen} TD 4
+	
+	Vitesse radiale : $ V_{\theta} = \frac{\Gamma}{2 \Pi \ r} $ où $\Gamma$ est la circulation. La longueur caractéristique de diffusion est $\Delta = \nu \ t$.
+
+	\item \textbf{Tourbillon de Burger}, tourbillon visqueux maintenu par étirement
+	
+	Le rayon du coeur tourbillonnaire est approché par $ \delta_d = \sqrt{\frac{\nu}{\alpha}} = \frac{d}{Re}$ 
+	avec l'étirement $\alpha = \frac{U}{d} > 0$ où $d$ est le diametre d'orifice et $U$ la vitesse débitante.
+
+\end{itemize}
+
+\subsection{Stabilité des écoulements}
 
 \section{Couche limite laminaire}
 
